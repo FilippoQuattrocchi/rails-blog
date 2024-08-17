@@ -8,6 +8,7 @@ services:
     name: rails
     env: ruby
     plan: free
+    region: singapore
     buildCommand: "./bin/render-build.sh"
     startCommand: bundle exec rails s
     envVars:
@@ -19,6 +20,7 @@ services:
           property: connectionString
   - type: redis
     name: redis
+    region: singapore
     ipAllowList: []
     plan: free
     maxmemoryPolicy: noeviction
