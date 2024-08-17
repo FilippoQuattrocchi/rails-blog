@@ -21,4 +21,4 @@ services:
     ipAllowList: []
     plan: free
     maxmemoryPolicy: noeviction
-versione: "1"
+version: "1"
