@@ -1,8 +1,8 @@
 databases:
   - name: postgres
-   ipAllowList: []
-   plan: free
-
+    ipAllowList: []
+    plan: free
+    region: singapore
 services:
   - type: web
     name: rails
@@ -21,3 +21,4 @@ services:
     ipAllowList: []
     plan: free
     maxmemoryPolicy: noeviction
+versione: "1"
