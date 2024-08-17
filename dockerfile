@@ -1,5 +1,5 @@
 # Rubyのバージョンを指定した公式イメージをベースに使用
-FROM ruby:3.2.2
+FROM ruby:3.3.4
 
 # 必要なパッケージのインストール
 RUN apt-get update -qq \
