@@ -1,4 +1,4 @@
-<h1><%= @article.title %></h1>
+<h1 class="text-3xl font-bold underline"><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
 
@@ -10,3 +10,31 @@
                   } %></li>
     <li><%= link_to "Back", articles_path %>
 </ul>
+
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

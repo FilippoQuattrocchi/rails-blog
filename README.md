@@ -16,3 +16,5 @@ Usefull comands
 - rails console
 - article = Article.new(title: "Hello Rails", body: "I am on Rails!")
 - article.save
+- rails generate model Comment commenter:string body:text article:references
+- rails db:migrate
