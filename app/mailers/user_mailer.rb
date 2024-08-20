@@ -12,6 +12,11 @@ class UserMailer < ApplicationMailer
     mail to: @user.confirmable_email, subject: "Confirmation Instructions"
   end
 
+  def welcome_email(user)
+    @user = user
+    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  end
+
   def password_reset(user, password_reset_token)
     @user = user
     @password_reset_token = password_reset_token

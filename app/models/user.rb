@@ -1,10 +1,9 @@
 class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
   PASSWORD_RESET_TOKEN_EXPIRATION = 10.minutes
-  MAILER_FROM_EMAIL = "no-reply@example.com"
+  MAILER_FROM_EMAIL = "no-reply@trial-jy7zpl9v0wog5vx6.mlsender.net"
 
   has_secure_password
-  has_secure_token :remember_token
   has_many :active_sessions, dependent: :destroy
   attr_accessor :current_password
 
