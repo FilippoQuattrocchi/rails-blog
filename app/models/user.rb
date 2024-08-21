@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness:true
   validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP, allow_blank: true}
 
+  #Image picture
+  has_one_attached :avatar
+
   def self.authenticate_by(attributes)
     passwords, identifiers = attributes.to_h.partition do |name, value|
       !has_attribute?(name) && has_attribute?("#{name}_digest")
