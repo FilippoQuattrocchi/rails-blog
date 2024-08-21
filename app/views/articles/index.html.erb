@@ -1,18 +1,20 @@
 <!-- Show all article -->
-<h1>Articles</h1>
+<div>
+  <div class="flex">
+    <h1 class="text-4xl font-bold m-4 flex">Latest</h1>
+    <%= link_to "New Article", new_article_path, class: "float-right button"%>
 
-Our blog has <%= Article.public_count %> articles and counting!
+  </div>
 
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>   
-      <li>
-          <%= link_to article.title, article %>
-        </a>
-      </li>
+  <p>Articles <%= Article.public_count %> available!</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <%= render partial: "preview", locals: { article: article} %>
+      <% end %>
     <% end %>
-  <% end %>
-
-</ul>
-
+  </div>
 <%= link_to "New Article", new_article_path %>
+
+</div>
