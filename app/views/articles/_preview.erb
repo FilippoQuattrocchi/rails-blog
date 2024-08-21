@@ -1,11 +1,16 @@
   <%#= link_to article do %>  <%# end %>
+  <%# if @article.picture.present? %>
+<!--    <li><%#= image_tag @article.picture %></li>-->
+  <%# end %>
     <!-- Themes: blue, purple and teal -->
     <div class="rounded overflow-hidden shadow-lg flex flex-col">
       <a href="<%= article_path(article) %>"></a>
       <div class="relative"><a href="<%= article_path(article) %>">
-        <img class="w-full"
-             src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-             alt="Sunset in the mountains">
+        <% if article.picture.present? %>
+          <%= image_tag article.picture ,class: "object-cover h-48 w-full", width: 500, height: 500 %>
+        <% else %>
+          <img class="w-full object-cover h-48" src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="Default image">
+        <% end %>
         <div
           class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
         </div>

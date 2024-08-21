@@ -9,7 +9,10 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
-    <li><%= link_to "Back", articles_path %>
+  <li><%= link_to "Back", articles_path %></li>
+  <% if @article.picture.present? %>
+    <li><%= image_tag @article.picture %></li>
+  <% end %>
 </ul>
 
 <h2>Comments</h2>

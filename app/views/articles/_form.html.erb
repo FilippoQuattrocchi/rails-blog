@@ -20,5 +20,10 @@
 	<%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
 </div>
 
+	<div>
+		<%= form.label :picture %><br />
+		<%= form.file_field :picture %>
+	</div>
+
 <div><%= form.submit %></div>
 <% end %>
