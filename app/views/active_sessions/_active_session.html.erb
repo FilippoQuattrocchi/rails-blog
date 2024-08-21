@@ -1,7 +1,7 @@
 <!-- Active session with table inside account page -->
-<tr>
-  <td><%= active_session.user_agent %></td>
-  <td><%= active_session.ip_address %></td>
-  <td><%= active_session.created_at %></td>
-  <td><%= button_to "Sign Out", active_session_path(active_session), method: :delete %></td>
+<tr class="">
+  <td scope="row" class="py-4 overflow-hidden text-ellipsis max-w-20"><%= active_session.user_agent %></td>
+  <td scope="row" class="py-4"><%= active_session.ip_address %></td>
+  <td scope="row" class="py-4"><%= active_session.created_at %></td>
+  <td scope="row" class="py-4 text-blue-600 hover:underline"><%= button_to "Sign Out", active_session_path(active_session), method: :delete %></td>
 </tr>
