@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
-  # get 'render/index'
-  # get '/articles', to: "articles#index"
-  # get '/articles/:id', to: "articles#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
+  
+  #Articles
   resources :articles do
     resources :comments
   end
@@ -21,6 +17,8 @@ Rails.application.routes.draw do
   put "account", to: "users#update"
   get "account", to: "users#edit"
   delete "account", to: "users#destroy"
+
+  #Resource for auth
   resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
   resources :passwords, only: [:create, :edit, :new, :update], param: :password_reset_token
   resources :active_sessions, only: [:destroy] do
@@ -29,5 +27,6 @@ Rails.application.routes.draw do
     end
   end
 
+  # Defines the root path route ("/")
   root "articles#index"
 end
