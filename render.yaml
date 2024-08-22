@@ -18,10 +18,15 @@ services:
         fromDatabase:
           name: postgres
           property: connectionString
+      - key: RAILS_HOST
+        sync: false
+      - key: RAILS_PORT
+        sync: false
+    runtime: ruby
   - type: redis
     name: redis
     region: singapore
-    ipAllowList: []
+    ipAllowList: [ ]
     plan: free
     maxmemoryPolicy: noeviction
 version: "1"
