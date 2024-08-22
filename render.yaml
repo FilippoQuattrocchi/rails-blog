@@ -20,8 +20,6 @@ services:
           property: connectionString
       - key: RAILS_HOST
         sync: false
-      - key: RAILS_PORT
-        sync: false
     runtime: ruby
   - type: redis
     name: redis
