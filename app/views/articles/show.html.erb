@@ -27,7 +27,10 @@
     <hr>
     <h2>Add a comment:</h2>
     <%= render "comments/form", article: @article %>
-    <%= render @article.comments %>
+    <% @comments.each do | comment | %>
+      <%= render comment %>
+    <% end %>
+    <%#= render @article.comments %>
   </div>
 </div>
 

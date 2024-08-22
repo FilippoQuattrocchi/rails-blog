@@ -1,10 +1,9 @@
 <!-- Form for create a new comment -->
 <%= form_with model: [article, article.comments.build] do |form| %>
   <div class="flex flex-row">
-    <div class="">
-      <p>
-        <%= form.label :commenter %><br/>
-        <%= form.text_field :commenter, value: Current.user.email, :readonly => true, class: " h-10 cursor-not-allowed rounded-lg text-gray-900" %>
+    <div class="flex align-middle justify-center flex-col">
+      <p class="align-middle">
+        <%= Current.user.email %>
       </p>
     </div>
     <div class="ml-5">

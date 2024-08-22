@@ -1,25 +1,28 @@
 <!-- Show and delete comment -->
 <% unless comment.archived? %>
-	<div>
-		<div>
-			<%= comment.commenter %>
-		</div>
-		<div>
-			<%= comment.body %>
-		</div>
-	</div>
-<p>
-	<strong>Commenter:</strong>
-
-</p>
-
-<p>
-	<strong>Comment:</strong>
-	<%= comment.body %>
-</p>
-
-<p>
-	<%= link_to "Destroy Comment", [comment.article, comment], data: {
-	turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-</p>
+  <div class="my-5">
+    <div class="flex flex-row">
+      <% if comment.user.blank? || comment.user.email.blank? %>
+        <!-- Invali usernmae -->
+      <% else %>
+        <div>
+          <% if Current.user.avatar.present? %>
+            <%= image_tag Current.user.avatar, class: "h-5 w-5" %>
+          <% end %>
+        </div>
+        <div class="ml-3">
+          <p><%= comment.user.email %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="mt-1 w-full">
+      <%= comment.body %>
+    </div>
+    <p class="rounded-lg bordered bg-red-700">
+      <% if comment.user == Current.user %>
+        <%= link_to "Delete", [comment.article, comment], data: {
+          turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <% end %>
+    </p>
+  </div>
 <% end %>
