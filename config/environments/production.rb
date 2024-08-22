@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "myapp_production"
 
-  config.action_mailer.perform_caching = false
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -81,6 +81,23 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
+
+  # SMTP SETTINGS
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: ENV["RAILS_HOST"], port: ENV["RAILS_PORT"] }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.preview_path = "#{Rails.root}/tmp/mailers/previews"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mailersend.net',
+    port:                 587,
+    domain:               'yourrubyapp.com',
+    user_name:            'MS_HkRWy6@trial-jy7zpl9v0wog5vx6.mlsender.net',
+    password:             'YiwbmSwmVMKnEwLg',
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
