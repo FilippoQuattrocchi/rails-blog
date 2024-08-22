@@ -1,0 +1,25 @@
+<!-- Form for create a new comment -->
+<%= form_with model: [article, article.comments.build] do |form| %>
+  <div class="flex flex-row">
+    <div class="flex align-middle justify-center flex-col">
+      <p class="align-middle">
+        <%= Current.user.email %>
+      </p>
+    </div>
+    <div class="ml-5">
+      <p>
+        <%= form.label :status %><br/>
+        <%= form.select :status, Visible::VALID_STATUSES, {}, { selected: 'public', class: "h-10 rounded-lg border w-32 p-2" }%>
+      </p>
+    </div>
+  </div>
+  <div class="mt-3">
+    <p>
+      <%= form.label :body %><br/>
+      <%= form.text_area :body, class: "w-full rounded-lg" %>
+    </p>
+  </div>
+  <div>
+    <p><%= form.submit "Submit" ,:class =>  "border p-2" %></p>
+  </div>
+<% end %>

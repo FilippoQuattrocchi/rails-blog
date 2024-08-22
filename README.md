@@ -8,3 +8,13 @@ Initial setup:
 1. docker compose build
 2. docker compose run web rails db:create
 3. docker compose run
+
+Usefull comands
+
+- docker compose run
+- docker exec -it <name_docker> sh (for ssh)
+- rails console
+- article = Article.new(title: "Hello Rails", body: "I am on Rails!")
+- article.save
+- rails generate model Comment commenter:string body:text article:references
+- rails db:migrate

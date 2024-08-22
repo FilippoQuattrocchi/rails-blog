@@ -1,0 +1,38 @@
+<!-- Show one article -->
+<div class="w-2/3 mx-auto">
+  <div class="mb-5">
+    <%= link_to "Back", articles_path, class: "mb-5 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br rounded me-2 mb-2 px-5 py-2.5" %>
+  </div>
+    <div>
+    <h1 class="text-3xl font-bold"><%= @article.title %></h1>
+    <p><%= distance_of_time_in_words(Time.now, @article.created_at) %> ago.</p>
+    <div class="my-5">
+      <%= link_to "Edit", edit_article_path(@article) , class: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br rounded me-2 mb-2 px-5 py-2.5" %>
+      <%= link_to "Destroy", article_path(@article), class: "text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br rounded me-2 mb-2 px-5 py-2.5",data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </div>
+  </div>
+  <div class="mx-auto items-center flex justify-center mb-5">
+    <% if @article.picture.present? %>
+      <%= image_tag @article.picture %>
+    <% end %>
+  </div>
+  <div class="justify-center">
+    <p><%= @article.body %></p>
+  </div>
+  <div class="mt-4">
+    <h2 class="text-4xl font-extralight">Comments</h2>
+    <hr>
+    <h2>Add a comment:</h2>
+    <%= render "comments/form", article: @article %>
+    <% @comments.each do | comment | %>
+      <%= render comment %>
+    <% end %>
+    <%#= render @article.comments %>
+  </div>
+</div>
+
+
+

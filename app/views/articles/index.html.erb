@@ -1,0 +1,19 @@
+<!-- Show all article -->
+<div>
+  <div class="flex w-full justify-between">
+    <h1 class="text-4xl font-bold flex">Latest</h1>
+    <%= link_to "New Article", new_article_path, class: "float-right button bg-blue-700 rounded text-white p-2"%>
+
+  </div>
+
+  <p>Articles <%= Article.public_count %> available!</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <%= render partial: "preview", locals: { article: article} %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

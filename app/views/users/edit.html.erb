@@ -1,0 +1,64 @@
+<!-- Edit Account -->
+<div class="grid grid-cols-3 gap-2">
+  <!-- Edit account column -->
+  <div class="col-span-1 border-b shadow-md p-2 sm:rounded-lg">
+    <%= form_with model: @user, url: account_path, method: :put do |form| %>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+      <div>
+        <%= form.label :email, "Current Email", class: "block mb-2 text-sm font-medium text-gray-900 text-black"%>
+        <%= form.email_field :email, disabled: true, readonly: true , class: " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-not-allowed" %>
+      </div>
+      <div>
+        <%= form.label :unconfirmed_email, "New Email", class: "block mb-2 text-sm font-medium text-gray-900 text-black" %>
+        <%= form.text_field :unconfirmed_email, class: " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      </div>
+      <div>
+        <%= form.label :password, "Password (leave blank if you don't want to change it)", class: "block mb-2 text-sm font-medium text-gray-900 text-black" %>
+        <%= form.password_field :password , class: " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
+      </div>
+      <div>
+        <%= form.label :password_confirmation, class: "block mb-2 text-sm font-medium text-gray-900 text-black" %>
+        <%= form.password_field :password_confirmation , class: " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
+      </div>
+      <hr/>
+      <div>
+        <%= form.label :current_password, "Current password (we need your current password to confirm your changes)", class: "block mb-2 text-sm font-medium text-gray-900 text-black" %>
+        <%= form.password_field :current_password, required: true, class: " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      </div>
+      <div>
+        <%= form.label "Profile Photo" %>
+        <%= form.file_field :avatar %><br>
+      </div>
+      <%= form.submit "Update Account" , class: "text-white mt-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+    <% end %>
+  </div>
+  <div class="col-span-2 p-2">
+    <div class="relative h-16">
+      <h2 class="absolute left-0">Current Logins</h2>
+      <%= button_to "Log out of all other sessions", destroy_all_active_sessions_path, method: :delete , class: "absolute right-0"%>
+    </div>
+
+    <% if @active_sessions.any? %>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left table-auto min-w-max text-slate-800">
+          <thead class="text-xs text-slate-500 border-slate-300 bg-slate-50 uppercase font-normal leading-none">
+          <tr>
+            <th scope="col" class="px-6 py-3 " >User Agent</th>
+            <th scope="col" class="px-6 py-3">IP Address</th>
+            <th scope="col" class="px-6 py-3">Signed In At</th>
+            <th scope="col" class="px-6 py-3">Sign Out</th>
+          </tr>
+          </thead>
+          <tbody>
+            <%= render @active_sessions %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+      <div>
+        <p>Nothing here?</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
