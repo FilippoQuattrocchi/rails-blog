@@ -84,7 +84,7 @@ Rails.application.configure do
 
   # SMTP SETTINGS
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: ENV["RAILS_HOST"], port: ENV["RAILS_PORT"] }
+  config.action_mailer.default_url_options = { host: ENV["RAILS_HOST"] }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.preview_path = "#{Rails.root}/tmp/mailers/previews"

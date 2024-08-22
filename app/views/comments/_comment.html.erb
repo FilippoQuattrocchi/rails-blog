@@ -18,7 +18,7 @@
     <div class="mt-1 w-full">
       <%= comment.body %>
     </div>
-    <p class="rounded-lg bordered bg-red-700">
+    <p class="rounded-lg bordered w-16">
       <% if comment.user == Current.user %>
         <%= link_to "Delete", [comment.article, comment], data: {
           turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
