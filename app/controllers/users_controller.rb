@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "Your account has been deleted."
   end
 
+
   def new
     @user = User.new
   end

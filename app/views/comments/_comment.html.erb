@@ -1,8 +1,16 @@
 <!-- Show and delete comment -->
 <% unless comment.archived? %>
+	<div>
+		<div>
+			<%= comment.commenter %>
+		</div>
+		<div>
+			<%= comment.body %>
+		</div>
+	</div>
 <p>
 	<strong>Commenter:</strong>
-	<%= comment.commenter %>
+
 </p>
 
 <p>

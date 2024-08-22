@@ -1,35 +1,31 @@
-  <%#= link_to article do %>  <%# end %>
-  <%# if @article.picture.present? %>
-<!--    <li><%#= image_tag @article.picture %></li>-->
-  <%# end %>
-    <!-- Themes: blue, purple and teal -->
-    <div class="rounded overflow-hidden shadow-lg flex flex-col">
-      <a href="<%= article_path(article) %>"></a>
-      <div class="relative"><a href="<%= article_path(article) %>">
-        <% if article.picture.present? %>
-          <%= image_tag article.picture ,class: "object-cover h-48 w-full", width: 500, height: 500 %>
-        <% else %>
-          <img class="w-full object-cover h-48" src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="Default image">
-        <% end %>
-        <div
-          class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-        </div>
-      </a>
-        <a href="#">
-          <div
-            class="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-            Tag
-          </div>
-        </a>
+<!-- Themes: blue, purple and teal -->
+<div class="rounded overflow-hidden shadow-lg flex flex-col">
+  <a href="<%= article_path(article) %>"></a>
+  <div class="relative"><a href="<%= article_path(article) %>">
+    <% if article.picture.present? %>
+      <%= image_tag article.picture, class: "object-cover h-48 w-full", width: 500, height: 500 %>
+    <% else %>
+      <img class="w-full object-cover h-48" src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="Default image">
+    <% end %>
+    <div
+      class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
+    </div>
+  </a>
+    <a href="#">
+      <div
+        class="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
+        Tag
       </div>
-      <div class="px-6 py-4 mb-auto">
-        <a href="<%= article_path(article) %>"
-           class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2"><%= article.title %></a>
-        <p class="text-gray-500 text-sm">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </p>
-      </div>
-      <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+    </a>
+  </div>
+  <div class="px-6 py-4 mb-auto">
+    <a href="<%= article_path(article) %>"
+       class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2"><%= article.title %></a>
+    <p class="text-gray-500 text-sm">
+      <%= article.body.truncate(80) %>
+    </p>
+  </div>
+  <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
                 <span class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -46,7 +42,7 @@
                     <span class="ml-1"><%= distance_of_time_in_words(Time.now, article.created_at) %></span>
                 </span>
 
-        <span class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+    <span class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg class="h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
@@ -54,5 +50,5 @@
                     </svg>
                     <span class="ml-1"><%= article.comments.count %> Comments</span>
                 </span>
-      </div>
-    </div>
+  </div>
+</div>
